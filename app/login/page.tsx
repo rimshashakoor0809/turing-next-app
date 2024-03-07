@@ -1,6 +1,6 @@
+"use client"
 
-
-import Login from '@/collections/login/Login'
+import { Login } from '@/collections'
 
 const LoginPage = () => {
   return (

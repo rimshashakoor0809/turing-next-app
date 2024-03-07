@@ -1,22 +1,12 @@
 "use client"
-import { Divider, Flex, Layout } from 'antd'
 import React from 'react'
-import styled from 'styled-components'
-import Text from 'antd/es/typography/Paragraph'
+import { Divider, Flex} from 'antd'
 import Title from 'antd/es/typography/Title'
 import { DataType } from '@/types'
 import { StyledText } from '@/styles/global.styled'
-
-
-const StyledContent = styled.div`
-display: flex;
-flex-direction: column;
-margin-bottom: 1rem;
-`;
-
+import { StyledContent } from './elements'
 
 const CallDetails : React.FC<{record : DataType}> = ({ record }) => {
-  // console.log("Call details ", record)
  
   const formattedData = [  
     {

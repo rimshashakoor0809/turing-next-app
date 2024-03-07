@@ -61,8 +61,6 @@ export const login = async (payload : {username : string, password :string}) => 
     cookies().set("access_token", access_token, { expires: Date.now() + 10 * 60 * 1000, httpOnly: true })
     cookies().set("exp_time", (Date.now() + 4 * 60 * 1000).toString(), { httpOnly: true });
     setAuthToken(access_token);
-    setupTokenRefreshTimer();
-    // redirect("/")
     return response.data;
   } catch (error) {
     return error?.response?.data;
@@ -130,7 +128,7 @@ export const updateStatus= async (id : string, payload : {}) => {
   }
 };
 
-export const checkAuth = async () => {
+export const isAuthenticated = async () => {
   try {
     refreshTokenIfNeeded();
     const token = cookies().get("access_token")?.value;
@@ -149,5 +147,4 @@ export const checkAuth = async () => {
 
 export const removeCookies =  () => {
   cookies().delete("access_token")
-  redirect("/")
 };

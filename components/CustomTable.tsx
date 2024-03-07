@@ -1,17 +1,24 @@
 "use client"
 import React, { useState } from 'react'
-import { Button, Flex, Popconfirm, Table, TableProps, message } from 'antd'
-import AddNoteModal from './AddNoteModal';
-// import { data } from '@/constants';
-import Text from 'antd/es/typography/Paragraph'
+import { Button, Flex, Table, TableProps, message } from 'antd'
 import { CustomTableProps, DataType } from '@/types';
 import { convertSecondsToMinutesAndSeconds } from '@/utils';
 import { StyledButton, StyledText } from '@/styles/global.styled';
 import { updateStatus } from '@/actions';
+import { AddNoteModal } from '@/collections';
 
 
 
-const CustomTable: React.FC<CustomTableProps> = ({ calls, totalCalls, pageSize, currentPage, handlePageChange, handlePageSizeChange, status, fetchCalls, loading }) => {
+const CustomTable: React.FC<CustomTableProps> = (
+  { calls,
+    totalCalls,
+    pageSize,
+    currentPage,
+    handlePageChange,
+    handlePageSizeChange,
+    status,
+    fetchCalls,
+    loading }) => {
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedRecord, setSelectedRecord] = useState<DataType | null>(null);
@@ -40,7 +47,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ calls, totalCalls, pageSize, 
     setModalVisible(false);
   };
 
-  const handleUpdateData = async (record) => {
+  const handleUpdateData = async (record : DataType) => {
     console.log("Status Record ::: ", record)
     setPending(true)
     const { id, is_archived } = record;
@@ -97,7 +104,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ calls, totalCalls, pageSize, 
       key: 'direction',
       render: (_, record) => {
         return (
-          <Text style={{ color: "blue" }}>{record.direction.charAt(0).toUpperCase() + record.direction.slice(1, record.direction.length)}</Text>
+          <StyledText color="blue">{record.direction.charAt(0).toUpperCase() + record.direction.slice(1, record.direction.length)}</StyledText>
         )
       }
     },
@@ -108,7 +115,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ calls, totalCalls, pageSize, 
       render: (_, record) => {
         return (
           <Flex vertical>
-            <Text>{convertSecondsToMinutesAndSeconds(record?.duration)}</Text>
+            <StyledText color="black">{convertSecondsToMinutesAndSeconds(record?.duration)}</StyledText>
             <StyledText color="blue">{`( ${record.duration} seconds)`}</StyledText>
           </Flex>
         )
@@ -167,7 +174,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ calls, totalCalls, pageSize, 
         const dateObject: Date = new Date(record.created_at);
         const dateOnlyString: string = dateObject.toISOString().split('T')[0];
         return (
-          <Text>{dateOnlyString}</Text>
+          <StyledText color="black">{dateOnlyString}</StyledText>
         )
       }
     },

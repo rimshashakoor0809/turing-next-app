@@ -1,14 +1,14 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import { CustomContent, CustomHeader, CustomText, DashboardWrapper } from './elements'
 import Image from 'next/image'
 import {  Button, Flex, Select} from 'antd'
 import Title from 'antd/es/typography/Title'
 import { CustomTable } from '@/components'
 import { getCalls, removeCookies } from '@/actions'
 import { DataType } from '@/types'
-import Spinner from '@/app/loading'
+import { CustomContent, CustomHeader, CustomText, DashboardWrapper } from './elements'
+import { useRouter } from 'next/navigation'
 
 
 const Dashboard = () => {
@@ -18,7 +18,8 @@ const Dashboard = () => {
   const [totalCalls, setTotalCalls] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(10);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState<string>("")
+  const router = useRouter()
 
    
   
@@ -53,6 +54,7 @@ const Dashboard = () => {
 
   const logout = () => {
     removeCookies()
+    router.push("/login")
   }
   return (
     <DashboardWrapper>

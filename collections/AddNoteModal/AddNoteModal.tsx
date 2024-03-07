@@ -1,9 +1,9 @@
+"use client"
+import React, { useState } from 'react'
 import { AddNoteModalProps } from '@/types';
-import { Button, Form, Input, Layout, Modal, message } from 'antd';
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
-import CallDetails from './CallDetails';
-import { getCallWithId, updateNote } from '@/actions';
+import { Button, Form, Input, Modal, message } from 'antd';
+import { updateNote } from '@/actions';
+import CallDetails from '../CallDetails/CallDetails';
 
 
 const AddNoteModal: React.FC<AddNoteModalProps> = ({ visible, onClose, record }) => {

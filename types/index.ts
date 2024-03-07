@@ -34,4 +34,6 @@ export interface CustomTableProps {
   handlePageChange: (page: number) => void;
   handlePageSizeChange: (current: number, size: number) => void;
   status: string;
+  loading: boolean;
+  fetchCalls: () => void;
 }

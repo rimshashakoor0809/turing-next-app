@@ -1,9 +1,7 @@
 
-import AddNoteModal from "./AddNoteModal"
 import CustomTable from "./CustomTable"
-import CallDetails from "./CallDetails"
+import AuthGuard from "./AuthGuard"
 export {
-  AddNoteModal,
   CustomTable,
-  CallDetails,
+  AuthGuard
 }
